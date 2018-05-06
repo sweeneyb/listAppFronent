@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
-import '../App.css';
+import logo from './logo.svg';
+import './App.css';
 
 class App extends Component {
   render() {
@@ -20,11 +20,8 @@ class App extends Component {
   componentWillMount() {
     console.log("in will mount")
     fetch("/listItems")
-    .then(handleErrors)
-    .then(res => {return res.json})
-    .then(res => console.log(res) )
-    // .then(res => console.log(res['body']))
-    // .then(res => console.log(res.body))
+    // .then(handleErrors)
+    .then(res => res.json().then(body => console.log(body["_embedded"])))
     console.log("done fetching")
   }
 
